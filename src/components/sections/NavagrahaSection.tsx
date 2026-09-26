@@ -33,32 +33,32 @@ export const NavagrahaSection: React.FC = () => {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-          {/* Planet Selection Grid */}
-          <div className="lg:col-span-7 grid grid-cols-3 gap-3">
+          {/* Planet Selection Grid (Responsive 2 cols on mobile, 3 cols on sm+) */}
+          <div className="lg:col-span-7 grid grid-cols-2 sm:grid-cols-3 gap-3">
             {PLANETS.map((p) => (
               <button
                 key={p.name}
                 onClick={() => setActivePlanet(p)}
-                className={`p-4 text-left border transition-all cursor-pointer bg-transparent ${
+                className={`p-3 sm:p-4 text-left border transition-all cursor-pointer bg-transparent ${
                   activePlanet.name === p.name
                     ? 'border-gold-400 scale-[1.02] shadow-lg'
                     : 'border-gold-500/20 text-ivory-200 hover:border-gold-400/50'
                 }`}
               >
                 <div className="text-[10px] font-mono !text-gold-400 font-bold mb-1">{p.symbol}</div>
-                <div className="font-serif text-base font-medium">{p.name}</div>
-                <div className="text-[10px] text-ivory-300 font-mono">{p.direction}</div>
+                <div className="font-serif text-sm sm:text-base font-medium truncate">{p.name}</div>
+                <div className="text-[10px] text-ivory-300 font-mono truncate">{p.direction}</div>
               </button>
             ))}
           </div>
 
           {/* Planet Detail Panel */}
           <div className="lg:col-span-5">
-            <div className="p-8 border border-gold-500/30 rounded-none gold-border-glow bg-transparent">
+            <div className="p-6 sm:p-8 border border-gold-500/30 rounded-none gold-border-glow bg-transparent">
               <span className="text-xs font-mono text-gold-400 tracking-widest uppercase block mb-2 font-bold">
                 CELESTIAL ARCHETYPE
               </span>
-              <h3 className="font-serif text-3xl text-ivory-100 font-semibold mb-1">
+              <h3 className="font-serif text-2xl sm:text-3xl text-ivory-100 font-semibold mb-1">
                 {activePlanet.name}
               </h3>
               <p className="text-xs font-mono !text-gold-400 font-bold mb-6">{activePlanet.symbol} • {activePlanet.role}</p>
