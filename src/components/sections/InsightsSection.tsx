@@ -68,7 +68,6 @@ const ARTICLES: Article[] = [
 export const InsightsSection: React.FC = () => {
   const [activeArticle, setActiveArticle] = useState<Article | null>(null);
 
-  // Close modal on Escape key
   React.useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
@@ -80,7 +79,7 @@ export const InsightsSection: React.FC = () => {
   }, []);
 
   return (
-    <section id="insights" className="relative bg-charcoal-900/60 py-28 px-6 md:px-12 border-b border-gold-500/10">
+    <section id="insights" className="relative py-28 px-6 md:px-12 border-b border-gold-500/10 z-10 bg-transparent">
       <div className="max-w-6xl mx-auto">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16">
           <div>
@@ -94,16 +93,16 @@ export const InsightsSection: React.FC = () => {
           </div>
         </div>
 
-        {/* High contrast, readable article cards */}
+        {/* High contrast translucent cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {ARTICLES.map((art) => (
             <div
               key={art.id}
               onClick={() => setActiveArticle(art)}
-              className="p-8 bg-charcoal-950 border border-gold-500/20 hover:border-gold-400 transition-all gold-border-glow flex flex-col justify-between group cursor-pointer"
+              className="p-8 border border-gold-500/30 hover:border-gold-400 transition-all gold-border-glow flex flex-col justify-between group cursor-pointer"
             >
               <div>
-                <div className="flex justify-between items-center text-[10px] font-mono text-gold-400 uppercase tracking-widest mb-3">
+                <div className="flex justify-between items-center text-[10px] font-mono text-gold-400 font-bold uppercase tracking-widest mb-3">
                   <span>{art.category}</span>
                   <span className="flex items-center space-x-1">
                     <Clock className="w-3 h-3" />
@@ -113,13 +112,13 @@ export const InsightsSection: React.FC = () => {
                 <h3 className="font-serif text-2xl text-ivory-100 font-semibold mb-3 group-hover:text-gold-300 transition-colors">
                   {art.title}
                 </h3>
-                <p className="text-sm text-ivory-200/80 font-sans leading-relaxed mb-6 font-light">
+                <p className="text-sm text-ivory-200 font-sans leading-relaxed mb-6 font-light">
                   {art.summary}
                 </p>
               </div>
-              <div className="pt-4 border-t border-gold-500/10 flex items-center space-x-2 text-xs font-mono font-semibold text-gold-300 group-hover:text-gold-100">
+              <div className="pt-4 border-t border-gold-500/10 flex items-center space-x-2 text-xs font-mono font-bold text-gold-400 group-hover:text-gold-300">
                 <span>READ FULL INSIGHT</span>
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform" />
+                <ArrowRight className="w-4 h-4 !text-gold-400 group-hover:translate-x-1.5 transition-transform" />
               </div>
             </div>
           ))}
@@ -129,23 +128,23 @@ export const InsightsSection: React.FC = () => {
       {/* Reader Modal */}
       {activeArticle && (
         <div
-          className="fixed inset-0 z-50 bg-charcoal-950/85 backdrop-blur-md flex items-center justify-center p-4 md:p-8 animate-fadeIn"
+          className="fixed inset-0 z-50 bg-charcoal-950/90 backdrop-blur-xl flex items-center justify-center p-4 md:p-8 animate-fadeIn"
           onClick={() => setActiveArticle(null)}
         >
           <div
-            className="bg-charcoal-900 border border-gold-500/30 max-w-3xl w-full max-h-[85vh] overflow-y-auto p-8 md:p-12 shadow-2xl relative gold-border-glow text-ivory-100"
+            className="border border-gold-500/30 max-w-3xl w-full max-h-[85vh] overflow-y-auto p-8 md:p-12 shadow-2xl relative gold-border-glow text-ivory-100"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Close Button */}
             <button
               onClick={() => setActiveArticle(null)}
-              className="absolute top-6 right-6 p-2 text-ivory-300 hover:text-gold-400 transition-colors border border-gold-500/20 bg-charcoal-950"
+              className="absolute top-6 right-6 p-2 text-gold-400 border border-gold-500/30 bg-transparent"
               aria-label="Close modal"
             >
-              <X className="w-5 h-5" />
+              <X className="w-5 h-5 !text-gold-400" />
             </button>
 
-            <div className="flex items-center space-x-3 text-gold-400 font-mono text-xs tracking-widest uppercase mb-4">
+            <div className="flex items-center space-x-3 text-gold-400 font-mono text-xs tracking-widest uppercase mb-4 font-bold">
               <span>{activeArticle.category}</span>
               <span>•</span>
               <span>{activeArticle.readTime}</span>
@@ -157,19 +156,19 @@ export const InsightsSection: React.FC = () => {
 
             <div className="w-16 h-[2px] bg-gold-400 mb-8" />
 
-            <div className="space-y-5 text-ivory-200/90 font-sans text-sm md:text-base leading-relaxed font-light">
+            <div className="space-y-5 text-ivory-200 font-sans text-sm md:text-base leading-relaxed font-light">
               {activeArticle.content.map((paragraph, idx) => (
                 <p key={idx}>{paragraph}</p>
               ))}
             </div>
 
-            <div className="mt-10 pt-6 border-t border-gold-500/10 flex justify-between items-center text-xs font-mono text-gold-400/80">
+            <div className="mt-10 pt-6 border-t border-gold-500/10 flex justify-between items-center text-xs font-mono text-gold-400 font-bold">
               <span>BHRAMADANAYAK EDITORIAL</span>
               <button
                 onClick={() => setActiveArticle(null)}
-                className="px-5 py-2 bg-gold-500 text-charcoal-950 font-bold uppercase tracking-widest hover:brightness-110 transition-all cursor-pointer"
+                className="px-5 py-2 border border-gold-400 font-mono font-bold uppercase tracking-widest cursor-pointer"
               >
-                Close Article
+                <span className="!text-gold-400">Close Article</span>
               </button>
             </div>
           </div>

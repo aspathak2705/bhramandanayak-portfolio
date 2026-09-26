@@ -4,19 +4,9 @@
 
 @layer base {
   body {
-    background-color: transparent !important;
+    background-color: #050505;
     color: #F5F1E8;
     overflow-x: hidden;
-  }
-
-  /* ABSOLUTE TRANSPARENCY RULE FOR ALL SECTIONS & CONTAINERS */
-  section,
-  main,
-  footer,
-  header,
-  div.section-transparent {
-    background-color: transparent !important;
-    background: transparent !important;
   }
 
   /* MANDATORY BUTTON TEXT COLOR OVERRIDE: ALWAYS GOLD #D4AF37 */
@@ -41,7 +31,7 @@
   width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: transparent;
+  background: #050505;
 }
 ::-webkit-scrollbar-thumb {
   background: rgba(212, 175, 55, 0.4);
@@ -51,13 +41,15 @@
   background: #D4AF37;
 }
 
-/* Gold border glow utility for transparent cards */
+/* Gold border glow utility with subtle dark translucency for maximum text readability */
 .gold-border-glow {
-  border: 1px solid rgba(212, 175, 55, 0.3);
-  background: transparent !important;
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  background-color: rgba(6, 7, 9, 0.65) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   transition: all 0.3s ease;
 }
 .gold-border-glow:hover {
-  border-color: rgba(212, 175, 55, 0.7);
+  border-color: rgba(212, 175, 55, 0.75);
   box-shadow: 0 0 25px rgba(212, 175, 55, 0.2);
 }
