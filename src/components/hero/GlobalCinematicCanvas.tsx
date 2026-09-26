@@ -75,15 +75,18 @@ export const GlobalCinematicCanvas: React.FC<GlobalCinematicCanvasProps> = ({ sc
     const rawFramePos = scrollProgress * (totalFrames - 1) + 1;
     let targetIndex = Math.min(totalFrames, Math.max(1, Math.round(rawFramePos)));
 
-    let imgToDraw = imagesRef.current.get(targetIndex);
+    // Frame 0001 is total black darkness in original video. If at very top (0 scroll), default to an illuminated frame (e.g. 15) until scrolled or if target is 1
+    let lookupIndex = targetIndex === 1 && scrollProgress === 0 ? 15 : targetIndex;
+
+    let imgToDraw = imagesRef.current.get(lookupIndex);
     if (!imgToDraw) {
-      for (let offset = 1; offset < 25; offset++) {
-        if (imagesRef.current.has(targetIndex - offset)) {
-          imgToDraw = imagesRef.current.get(targetIndex - offset);
+      for (let offset = 1; offset < 30; offset++) {
+        if (imagesRef.current.has(lookupIndex - offset)) {
+          imgToDraw = imagesRef.current.get(lookupIndex - offset);
           break;
         }
-        if (imagesRef.current.has(targetIndex + offset)) {
-          imgToDraw = imagesRef.current.get(targetIndex + offset);
+        if (imagesRef.current.has(lookupIndex + offset)) {
+          imgToDraw = imagesRef.current.get(lookupIndex + offset);
           break;
         }
       }
