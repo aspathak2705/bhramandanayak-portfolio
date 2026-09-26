@@ -78,9 +78,9 @@ export const VastuMandala: React.FC = () => {
   const [selectedZone, setSelectedZone] = useState<ZoneInfo>(ZONES.CENTER);
 
   return (
-    <section id="mandala" className="relative py-28 px-6 md:px-12 border-b border-gold-500/10 z-10">
+    <section id="mandala" className="relative py-28 px-6 md:px-12 border-b border-gold-500/10 z-10 bg-transparent">
       <div className="max-w-6xl mx-auto">
-        <div className="text-center max-w-3xl mx-auto mb-16 bg-charcoal-950/70 backdrop-blur-md p-8 border border-gold-500/20 gold-border-glow">
+        <div className="text-center max-w-3xl mx-auto mb-16 p-8 border border-gold-500/30 gold-border-glow bg-transparent">
           <div className="flex items-center justify-center space-x-3 text-gold-400 font-mono text-xs tracking-ultra uppercase mb-4">
             <span className="w-8 h-[1px] bg-gold-400/50" />
             <span>SACRED GEOMETRY</span>
@@ -89,7 +89,7 @@ export const VastuMandala: React.FC = () => {
           <h2 className="font-serif text-3xl md:text-5xl text-ivory-100 font-light mb-4">
             The Vastu Purusha Mandala
           </h2>
-          <p className="text-ivory-200/90 text-base font-sans font-light">
+          <p className="text-ivory-200 text-base font-sans font-light">
             Interactive sacred energy matrix. Select directions to reveal spatial associations and elemental forces.
           </p>
         </div>
@@ -97,119 +97,119 @@ export const VastuMandala: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           {/* Interactive Mandala Grid */}
           <div className="lg:col-span-7 flex justify-center">
-            <div className="relative w-full max-w-md aspect-square bg-charcoal-950/80 backdrop-blur-md border border-gold-500/30 p-4 shadow-2xl gold-border-glow">
-              <span className="absolute top-2 left-2 text-[10px] font-mono text-gold-400">NW</span>
-              <span className="absolute top-2 right-2 text-[10px] font-mono text-gold-400">NE</span>
-              <span className="absolute bottom-2 left-2 text-[10px] font-mono text-gold-400">SW</span>
-              <span className="absolute bottom-2 right-2 text-[10px] font-mono text-gold-400">SE</span>
+            <div className="relative w-full max-w-md aspect-square border border-gold-500/30 p-4 gold-border-glow bg-transparent">
+              <span className="absolute top-2 left-2 text-[10px] font-mono text-gold-400 font-bold">NW</span>
+              <span className="absolute top-2 right-2 text-[10px] font-mono text-gold-400 font-bold">NE</span>
+              <span className="absolute bottom-2 left-2 text-[10px] font-mono text-gold-400 font-bold">SW</span>
+              <span className="absolute bottom-2 right-2 text-[10px] font-mono text-gold-400 font-bold">SE</span>
 
               <div className="grid grid-cols-3 grid-rows-3 w-full h-full gap-2">
                 <button
                   onClick={() => setSelectedZone(ZONES.NW)}
-                  className={`border p-2 flex flex-col items-center justify-center transition-all cursor-pointer ${
+                  className={`border p-2 flex flex-col items-center justify-center transition-all cursor-pointer bg-transparent ${
                     selectedZone.code === 'NW'
-                      ? 'bg-gold-500/30 border-gold-400 text-gold-300 scale-[1.02]'
-                      : 'border-gold-500/20 bg-charcoal-900/60 hover:border-gold-400/60 text-ivory-200'
+                      ? 'border-gold-400 scale-[1.02] shadow-lg'
+                      : 'border-gold-500/20 hover:border-gold-400/60 text-ivory-200'
                   }`}
                 >
-                  <span className="font-mono text-xs font-bold">NW</span>
+                  <span className="font-mono text-xs font-bold !text-gold-400">NW</span>
                   <span className="text-[10px] text-ivory-300">Vayavya</span>
                 </button>
 
                 <button
                   onClick={() => setSelectedZone(ZONES.N)}
-                  className={`border p-2 flex flex-col items-center justify-center transition-all cursor-pointer ${
+                  className={`border p-2 flex flex-col items-center justify-center transition-all cursor-pointer bg-transparent ${
                     selectedZone.code === 'N'
-                      ? 'bg-gold-500/30 border-gold-400 text-gold-300 scale-[1.02]'
-                      : 'border-gold-500/20 bg-charcoal-900/60 hover:border-gold-400/60 text-ivory-200'
+                      ? 'border-gold-400 scale-[1.02] shadow-lg'
+                      : 'border-gold-500/20 hover:border-gold-400/60 text-ivory-200'
                   }`}
                 >
-                  <span className="font-mono text-xs font-bold">NORTH</span>
+                  <span className="font-mono text-xs font-bold !text-gold-400">NORTH</span>
                   <span className="text-[10px] text-ivory-300">Kubera</span>
                 </button>
 
                 <button
                   onClick={() => setSelectedZone(ZONES.NE)}
-                  className={`border p-2 flex flex-col items-center justify-center transition-all cursor-pointer ${
+                  className={`border p-2 flex flex-col items-center justify-center transition-all cursor-pointer bg-transparent ${
                     selectedZone.code === 'NE'
-                      ? 'bg-gold-500/30 border-gold-400 text-gold-300 scale-[1.02]'
-                      : 'border-gold-500/20 bg-charcoal-900/60 hover:border-gold-400/60 text-ivory-200'
+                      ? 'border-gold-400 scale-[1.02] shadow-lg'
+                      : 'border-gold-500/20 hover:border-gold-400/60 text-ivory-200'
                   }`}
                 >
-                  <span className="font-mono text-xs font-bold">NE</span>
+                  <span className="font-mono text-xs font-bold !text-gold-400">NE</span>
                   <span className="text-[10px] text-ivory-300">Ishan</span>
                 </button>
 
                 <button
                   onClick={() => setSelectedZone(ZONES.W)}
-                  className={`border p-2 flex flex-col items-center justify-center transition-all cursor-pointer ${
+                  className={`border p-2 flex flex-col items-center justify-center transition-all cursor-pointer bg-transparent ${
                     selectedZone.code === 'W'
-                      ? 'bg-gold-500/30 border-gold-400 text-gold-300 scale-[1.02]'
-                      : 'border-gold-500/20 bg-charcoal-900/60 hover:border-gold-400/60 text-ivory-200'
+                      ? 'border-gold-400 scale-[1.02] shadow-lg'
+                      : 'border-gold-500/20 hover:border-gold-400/60 text-ivory-200'
                   }`}
                 >
-                  <span className="font-mono text-xs font-bold">WEST</span>
+                  <span className="font-mono text-xs font-bold !text-gold-400">WEST</span>
                   <span className="text-[10px] text-ivory-300">Varuna</span>
                 </button>
 
                 {/* Center Brahmasthan */}
                 <button
                   onClick={() => setSelectedZone(ZONES.CENTER)}
-                  className={`border p-2 flex flex-col items-center justify-center transition-all cursor-pointer ${
+                  className={`border p-2 flex flex-col items-center justify-center transition-all cursor-pointer bg-transparent ${
                     selectedZone.code === 'CENTER'
-                      ? 'bg-gold-500/40 border-gold-400 text-gold-300 scale-[1.02]'
-                      : 'border-gold-400/40 bg-gold-900/20 hover:border-gold-400 text-gold-300'
+                      ? 'border-gold-400 scale-[1.02] shadow-lg'
+                      : 'border-gold-400/50 hover:border-gold-400'
                   }`}
                 >
-                  <span className="font-mono text-xs font-bold text-gold-300">BRAHMASTHAN</span>
-                  <span className="text-[9px] text-gold-300 uppercase tracking-tighter">Cosmic Core</span>
+                  <span className="font-mono text-xs font-bold !text-gold-400">BRAHMASTHAN</span>
+                  <span className="text-[9px] !text-gold-400 uppercase tracking-tighter">Cosmic Core</span>
                 </button>
 
                 <button
                   onClick={() => setSelectedZone(ZONES.E)}
-                  className={`border p-2 flex flex-col items-center justify-center transition-all cursor-pointer ${
+                  className={`border p-2 flex flex-col items-center justify-center transition-all cursor-pointer bg-transparent ${
                     selectedZone.code === 'E'
-                      ? 'bg-gold-500/30 border-gold-400 text-gold-300 scale-[1.02]'
-                      : 'border-gold-500/20 bg-charcoal-900/60 hover:border-gold-400/60 text-ivory-200'
+                      ? 'border-gold-400 scale-[1.02] shadow-lg'
+                      : 'border-gold-500/20 hover:border-gold-400/60 text-ivory-200'
                   }`}
                 >
-                  <span className="font-mono text-xs font-bold">EAST</span>
+                  <span className="font-mono text-xs font-bold !text-gold-400">EAST</span>
                   <span className="text-[10px] text-ivory-300">Indra</span>
                 </button>
 
                 <button
                   onClick={() => setSelectedZone(ZONES.SW)}
-                  className={`border p-2 flex flex-col items-center justify-center transition-all cursor-pointer ${
+                  className={`border p-2 flex flex-col items-center justify-center transition-all cursor-pointer bg-transparent ${
                     selectedZone.code === 'SW'
-                      ? 'bg-gold-500/30 border-gold-400 text-gold-300 scale-[1.02]'
-                      : 'border-gold-500/20 bg-charcoal-900/60 hover:border-gold-400/60 text-ivory-200'
+                      ? 'border-gold-400 scale-[1.02] shadow-lg'
+                      : 'border-gold-500/20 hover:border-gold-400/60 text-ivory-200'
                   }`}
                 >
-                  <span className="font-mono text-xs font-bold">SW</span>
+                  <span className="font-mono text-xs font-bold !text-gold-400">SW</span>
                   <span className="text-[10px] text-ivory-300">Nairritya</span>
                 </button>
 
                 <button
                   onClick={() => setSelectedZone(ZONES.S)}
-                  className={`border p-2 flex flex-col items-center justify-center transition-all cursor-pointer ${
+                  className={`border p-2 flex flex-col items-center justify-center transition-all cursor-pointer bg-transparent ${
                     selectedZone.code === 'S'
-                      ? 'bg-gold-500/30 border-gold-400 text-gold-300 scale-[1.02]'
-                      : 'border-gold-500/20 bg-charcoal-900/60 hover:border-gold-400/60 text-ivory-200'
+                      ? 'border-gold-400 scale-[1.02] shadow-lg'
+                      : 'border-gold-500/20 hover:border-gold-400/60 text-ivory-200'
                   }`}
                 >
-                  <span className="font-mono text-xs font-bold">SOUTH</span>
+                  <span className="font-mono text-xs font-bold !text-gold-400">SOUTH</span>
                   <span className="text-[10px] text-ivory-300">Yama</span>
                 </button>
 
                 <button
                   onClick={() => setSelectedZone(ZONES.SE)}
-                  className={`border p-2 flex flex-col items-center justify-center transition-all cursor-pointer ${
+                  className={`border p-2 flex flex-col items-center justify-center transition-all cursor-pointer bg-transparent ${
                     selectedZone.code === 'SE'
-                      ? 'bg-gold-500/30 border-gold-400 text-gold-300 scale-[1.02]'
-                      : 'border-gold-500/20 bg-charcoal-900/60 hover:border-gold-400/60 text-ivory-200'
+                      ? 'border-gold-400 scale-[1.02] shadow-lg'
+                      : 'border-gold-500/20 hover:border-gold-400/60 text-ivory-200'
                   }`}
                 >
-                  <span className="font-mono text-xs font-bold">SE</span>
+                  <span className="font-mono text-xs font-bold !text-gold-400">SE</span>
                   <span className="text-[10px] text-ivory-300">Agneya</span>
                 </button>
               </div>
@@ -218,8 +218,8 @@ export const VastuMandala: React.FC = () => {
 
           {/* Details Card Column */}
           <div className="lg:col-span-5">
-            <div className="p-8 bg-charcoal-950/80 backdrop-blur-md border border-gold-500/30 rounded-none gold-border-glow">
-              <span className="text-xs font-mono text-gold-400 tracking-widest uppercase block mb-2 font-semibold">
+            <div className="p-8 border border-gold-500/30 gold-border-glow bg-transparent">
+              <span className="text-xs font-mono text-gold-400 tracking-widest uppercase block mb-2 font-bold">
                 ZONE INSIGHT
               </span>
               <h3 className="font-serif text-2xl text-ivory-100 font-semibold mb-4">
@@ -229,15 +229,15 @@ export const VastuMandala: React.FC = () => {
               <div className="space-y-4 mb-6 border-y border-gold-500/10 py-4">
                 <div className="flex justify-between items-center text-xs">
                   <span className="text-ivory-400 font-mono uppercase">Governing Force:</span>
-                  <span className="text-gold-300 font-semibold">{selectedZone.deity}</span>
+                  <span className="text-gold-400 font-bold">{selectedZone.deity}</span>
                 </div>
                 <div className="flex justify-between items-center text-xs">
                   <span className="text-ivory-400 font-mono uppercase">Primary Element:</span>
-                  <span className="text-gold-300 font-semibold">{selectedZone.element}</span>
+                  <span className="text-gold-400 font-bold">{selectedZone.element}</span>
                 </div>
               </div>
 
-              <p className="text-ivory-200/90 text-sm font-sans leading-relaxed font-light">
+              <p className="text-ivory-200 text-sm font-sans leading-relaxed font-light">
                 {selectedZone.attributes}
               </p>
             </div>

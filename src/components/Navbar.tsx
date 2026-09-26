@@ -1,100 +1,88 @@
-import React, { useState, useEffect } from 'react';
-import { Compass, Menu, X, ArrowRight } from 'lucide-react';
+import React, { useState } from 'react';
+import { Menu, X, ArrowRight } from 'lucide-react';
 
 interface NavbarProps {
   onBookClick: () => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({ onBookClick }) => {
-  const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 80);
-    };
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
   const navLinks = [
-    { name: 'About', href: '#about' },
-    { name: 'Philosophy', href: '#philosophy' },
-    { name: 'Mandala', href: '#mandala' },
-    { name: 'Elements', href: '#elements' },
-    { name: 'Services', href: '#services' },
-    { name: 'Process', href: '#process' },
-    { name: 'Insights', href: '#insights' },
-    { name: 'Contact', href: '#contact' },
+    { name: 'ABOUT', href: '#about' },
+    { name: 'PHILOSOPHY', href: '#philosophy' },
+    { name: 'MANDALA', href: '#mandala' },
+    { name: 'ELEMENTS', href: '#elements' },
+    { name: 'NAVAGRAHA', href: '#navagraha' },
+    { name: 'SERVICES', href: '#services' },
+    { name: 'PROCESS', href: '#process' },
+    { name: 'INSIGHTS', href: '#insights' },
+    { name: 'CONTACT', href: '#contact' },
   ];
 
   return (
-    <nav
-      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-500 ${
-        isScrolled
-          ? 'bg-charcoal-950/90 backdrop-blur-md border-b border-gold-500/15 py-4 shadow-2xl'
-          : 'bg-transparent py-6'
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
-        {/* Brand Logo & Name */}
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-transparent border-b border-gold-500/20 py-4 px-6 md:px-12">
+      <div className="max-w-7xl mx-auto flex items-center justify-between">
+        {/* LEFT: Official Brand Logo from assets/ */}
         <a href="#" className="flex items-center space-x-3 group">
-          <div className="w-10 h-10 rounded-full border border-gold-400/50 flex items-center justify-center bg-charcoal-900/80 group-hover:border-gold-400 transition-colors">
-            <Compass className="w-5 h-5 text-gold-400 group-hover:rotate-45 transition-transform duration-500" />
-          </div>
+          <img
+            src="/logo.jpeg"
+            alt="Bhramadanayak Vastu Consultancy Logo"
+            className="w-10 h-10 object-contain rounded-full border border-gold-400/50"
+          />
           <div className="flex flex-col">
-            <span className="font-serif text-base tracking-widest text-ivory-100 font-semibold group-hover:text-gold-300 transition-colors">
+            <span className="font-serif text-sm md:text-base tracking-widest text-ivory-100 font-semibold group-hover:text-gold-300 transition-colors">
               BHRAMADANAYAK
             </span>
-            <span className="text-[9px] tracking-ultra text-gold-400/80 font-mono uppercase">
+            <span className="text-[8px] tracking-ultra text-gold-400 font-mono uppercase">
               VASTU CONSULTANCY
             </span>
           </div>
         </a>
 
-        {/* Desktop Links - Generous spacing & clean typography */}
-        <div className="hidden lg:flex items-center space-x-8 text-xs tracking-widest uppercase font-sans font-medium text-ivory-200">
+        {/* CENTER: Desktop Navigation */}
+        <div className="hidden lg:flex items-center space-x-7 text-xs tracking-widest uppercase font-mono font-medium text-ivory-200">
           {navLinks.map((link) => (
             <a
               key={link.name}
               href={link.href}
-              className="hover:text-gold-300 transition-colors relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] after:bg-gold-400 hover:after:w-full after:transition-all after:duration-300"
+              className="hover:text-gold-400 transition-colors py-1"
             >
               {link.name}
             </a>
           ))}
         </div>
 
-        {/* Consultation Button - High contrast text */}
+        {/* RIGHT: Primary Gold CTA */}
         <div className="hidden lg:flex items-center">
           <button
             onClick={onBookClick}
-            className="px-6 py-3 bg-gradient-to-r from-gold-600 via-gold-500 to-gold-600 text-charcoal-950 font-bold text-xs tracking-widest uppercase rounded-none hover:brightness-110 transition-all flex items-center space-x-2 shadow-lg shadow-gold-500/20 cursor-pointer"
+            className="px-5 py-2.5 bg-transparent border border-gold-400 hover:bg-gold-500/10 font-mono font-bold text-xs tracking-widest uppercase transition-all flex items-center space-x-2 cursor-pointer"
           >
-            <span>Book Consultation</span>
-            <ArrowRight className="w-4 h-4" />
+            <span className="!text-gold-400">BOOK A CONSULTATION</span>
+            <ArrowRight className="w-3.5 h-3.5 !text-gold-400" />
           </button>
         </div>
 
-        {/* Mobile Menu Toggle */}
+        {/* Mobile Toggle */}
         <button
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="lg:hidden p-2.5 text-ivory-100 hover:text-gold-400 transition-colors border border-gold-500/20 bg-charcoal-900/80"
+          className="lg:hidden p-2 text-gold-400 border border-gold-500/30 bg-transparent"
           aria-label="Toggle menu"
         >
-          {mobileMenuOpen ? <X className="w-6 h-6 text-gold-400" /> : <Menu className="w-6 h-6 text-gold-400" />}
+          {mobileMenuOpen ? <X className="w-6 h-6 !text-gold-400" /> : <Menu className="w-6 h-6 !text-gold-400" />}
         </button>
       </div>
 
-      {/* Mobile Drawer */}
+      {/* Mobile Navigation Drawer (Transparent background) */}
       {mobileMenuOpen && (
-        <div className="lg:hidden fixed inset-x-0 top-[73px] bg-charcoal-950/98 backdrop-blur-2xl border-b border-gold-500/20 px-8 py-8 space-y-5 shadow-2xl z-50">
+        <div className="lg:hidden fixed inset-x-0 top-[73px] bg-transparent border-b border-gold-500/30 px-8 py-8 space-y-4 z-50">
           {navLinks.map((link) => (
             <a
               key={link.name}
               href={link.href}
               onClick={() => setMobileMenuOpen(false)}
-              className="block text-base tracking-widest uppercase font-serif text-ivory-100 hover:text-gold-300 transition-colors py-2.5 border-b border-gold-500/10"
+              className="block text-sm tracking-widest font-mono uppercase text-ivory-100 hover:text-gold-400 py-2 border-b border-gold-500/10"
             >
               {link.name}
             </a>
@@ -104,10 +92,10 @@ export const Navbar: React.FC<NavbarProps> = ({ onBookClick }) => {
               setMobileMenuOpen(false);
               onBookClick();
             }}
-            className="w-full mt-6 py-4 bg-gradient-to-r from-gold-600 to-gold-500 text-charcoal-950 font-bold text-xs tracking-widest uppercase rounded-none flex items-center justify-center space-x-2 shadow-lg shadow-gold-500/20"
+            className="w-full mt-4 py-3 bg-transparent border border-gold-400 font-mono font-bold text-xs tracking-widest uppercase flex items-center justify-center space-x-2"
           >
-            <span>Book Consultation</span>
-            <ArrowRight className="w-4 h-4" />
+            <span className="!text-gold-400">BOOK A CONSULTATION</span>
+            <ArrowRight className="w-4 h-4 !text-gold-400" />
           </button>
         </div>
       )}

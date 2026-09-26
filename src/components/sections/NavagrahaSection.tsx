@@ -16,9 +16,9 @@ export const NavagrahaSection: React.FC = () => {
   const [activePlanet, setActivePlanet] = useState(PLANETS[0]);
 
   return (
-    <section className="relative bg-charcoal-950 py-28 px-6 md:px-12 border-b border-gold-500/10">
+    <section id="navagraha" className="relative py-28 px-6 md:px-12 border-b border-gold-500/10 z-10 bg-transparent">
       <div className="max-w-6xl mx-auto">
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-16 p-8 border border-gold-500/30 gold-border-glow bg-transparent">
           <div className="flex items-center justify-center space-x-3 text-gold-400 font-mono text-xs tracking-ultra uppercase mb-4">
             <span className="w-8 h-[1px] bg-gold-400/50" />
             <span>CELESTIAL INFLUENCES</span>
@@ -27,7 +27,7 @@ export const NavagrahaSection: React.FC = () => {
           <h2 className="font-serif text-3xl md:text-5xl text-ivory-100 font-light mb-4">
             Navagraha — Nine Celestial Forces
           </h2>
-          <p className="text-ivory-300/80 text-base font-sans font-light">
+          <p className="text-ivory-200 text-base font-sans font-light">
             Traditional spatial cosmology recognizes how orbital celestial dynamics correspond with room orientations.
           </p>
         </div>
@@ -39,29 +39,29 @@ export const NavagrahaSection: React.FC = () => {
               <button
                 key={p.name}
                 onClick={() => setActivePlanet(p)}
-                className={`p-4 text-left border transition-all ${
+                className={`p-4 text-left border transition-all cursor-pointer bg-transparent ${
                   activePlanet.name === p.name
-                    ? 'bg-gold-500/20 border-gold-400 text-gold-300 shadow-lg shadow-gold-500/10'
-                    : 'border-gold-500/10 bg-charcoal-900/60 text-ivory-200 hover:border-gold-400/30'
+                    ? 'border-gold-400 scale-[1.02] shadow-lg'
+                    : 'border-gold-500/20 text-ivory-200 hover:border-gold-400/50'
                 }`}
               >
-                <div className="text-[10px] font-mono text-gold-400/70 mb-1">{p.symbol}</div>
+                <div className="text-[10px] font-mono !text-gold-400 font-bold mb-1">{p.symbol}</div>
                 <div className="font-serif text-base font-medium">{p.name}</div>
-                <div className="text-[10px] text-ivory-400/60 font-mono">{p.direction}</div>
+                <div className="text-[10px] text-ivory-300 font-mono">{p.direction}</div>
               </button>
             ))}
           </div>
 
           {/* Planet Detail Panel */}
           <div className="lg:col-span-5">
-            <div className="p-8 bg-charcoal-900 border border-gold-500/20 rounded-none gold-border-glow">
-              <span className="text-xs font-mono text-gold-400 tracking-widest uppercase block mb-2">
+            <div className="p-8 border border-gold-500/30 rounded-none gold-border-glow bg-transparent">
+              <span className="text-xs font-mono text-gold-400 tracking-widest uppercase block mb-2 font-bold">
                 CELESTIAL ARCHETYPE
               </span>
               <h3 className="font-serif text-3xl text-ivory-100 font-semibold mb-1">
                 {activePlanet.name}
               </h3>
-              <p className="text-xs font-mono text-gold-300 mb-6">{activePlanet.symbol} • {activePlanet.role}</p>
+              <p className="text-xs font-mono !text-gold-400 font-bold mb-6">{activePlanet.symbol} • {activePlanet.role}</p>
 
               <div className="mb-6 pb-4 border-b border-gold-500/10">
                 <span className="text-[10px] font-mono text-ivory-400 uppercase tracking-widest block mb-1">
@@ -70,7 +70,7 @@ export const NavagrahaSection: React.FC = () => {
                 <span className="text-sm font-sans text-ivory-100 font-medium">{activePlanet.direction}</span>
               </div>
 
-              <p className="text-ivory-200/80 text-sm font-sans leading-relaxed">
+              <p className="text-ivory-200 text-sm font-sans leading-relaxed font-light">
                 {activePlanet.detail}
               </p>
             </div>

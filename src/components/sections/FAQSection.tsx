@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { ChevronDown, HelpCircle } from 'lucide-react';
+import { ChevronDown } from 'lucide-react';
 
 const FAQS = [
   {
     q: 'What is Vastu Vidya?',
-    a: 'Vastu Vidya is the ancient Indian science of architecture, spatial design, and spatial geometry. It studies how orientation, magnetism, solar rays, and five natural elements influence human health, peace, and domestic vitality.',
+    a: 'Vastu Vidya is the classical Indian science of architecture, spatial design, and spatial geometry. It studies how orientation, magnetism, solar rays, and five natural elements influence human health, peace, and domestic vitality.',
   },
   {
     q: 'What is a Vastu Purusha Mandala?',
@@ -32,9 +32,9 @@ export const FAQSection: React.FC = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section className="relative bg-charcoal-950 py-28 px-6 md:px-12 border-b border-gold-500/10">
+    <section className="relative py-28 px-6 md:px-12 border-b border-gold-500/10 z-10 bg-transparent">
       <div className="max-w-4xl mx-auto">
-        <div className="text-center mb-16">
+        <div className="text-center mb-16 p-8 border border-gold-500/30 gold-border-glow bg-transparent">
           <div className="flex items-center justify-center space-x-3 text-gold-400 font-mono text-xs tracking-ultra uppercase mb-4">
             <span className="w-8 h-[1px] bg-gold-400/50" />
             <span>CLARITY & GUIDANCE</span>
@@ -43,7 +43,7 @@ export const FAQSection: React.FC = () => {
           <h2 className="font-serif text-3xl md:text-5xl text-ivory-100 font-light mb-4">
             Frequently Asked Questions
           </h2>
-          <p className="text-ivory-300/80 text-sm font-sans font-light">
+          <p className="text-ivory-200 text-sm font-sans font-light">
             Modest, factual answers to common inquiries regarding Vastu Vidya and spatial consultations.
           </p>
         </div>
@@ -52,22 +52,22 @@ export const FAQSection: React.FC = () => {
           {FAQS.map((faq, idx) => (
             <div
               key={faq.q}
-              className="border border-gold-500/10 bg-charcoal-900/60 overflow-hidden gold-border-glow"
+              className="border border-gold-500/30 overflow-hidden gold-border-glow bg-transparent"
             >
               <button
                 onClick={() => setOpenIndex(openIndex === idx ? null : idx)}
-                className="w-full p-6 text-left flex justify-between items-center space-x-4 cursor-pointer"
+                className="w-full p-6 text-left flex justify-between items-center space-x-4 cursor-pointer bg-transparent"
               >
                 <span className="font-serif text-lg text-ivory-100 font-medium">{faq.q}</span>
                 <ChevronDown
-                  className={`w-5 h-5 text-gold-400 shrink-0 transition-transform duration-300 ${
+                  className={`w-5 h-5 !text-gold-400 shrink-0 transition-transform duration-300 ${
                     openIndex === idx ? 'rotate-180' : ''
                   }`}
                 />
               </button>
 
               {openIndex === idx && (
-                <div className="px-6 pb-6 pt-2 border-t border-gold-500/10 text-xs text-ivory-300/80 leading-relaxed font-sans">
+                <div className="px-6 pb-6 pt-2 border-t border-gold-500/10 text-xs text-ivory-200 leading-relaxed font-sans bg-transparent">
                   {faq.a}
                 </div>
               )}

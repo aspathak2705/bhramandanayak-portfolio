@@ -1,7 +1,7 @@
-import React, { useEffect, useRef, useState, useCallback } from 'react';
+import React, { useEffect, useRef, useCallback } from 'react';
 
 interface GlobalCinematicCanvasProps {
-  scrollProgress: number; // 0.0 at top of document to 1.0 at absolute bottom
+  scrollProgress: number; // 0.0 to 1.0 document scroll ratio
 }
 
 export const GlobalCinematicCanvas: React.FC<GlobalCinematicCanvasProps> = ({ scrollProgress }) => {
@@ -38,14 +38,14 @@ export const GlobalCinematicCanvas: React.FC<GlobalCinematicCanvasProps> = ({ sc
     };
 
     const loadAllFrames = async () => {
-      // Step 1: Preload priority initial batch (frames 1-25)
+      // Priority load first 25 frames
       const priorityBatch = [];
       for (let i = 1; i <= 25; i++) {
         priorityBatch.push(loadFrame(i));
       }
       await Promise.all(priorityBatch);
 
-      // Step 2: Progressively load remaining frames in background chunks
+      // Background progressive chunk load remaining frames
       const chunkSize = 15;
       for (let i = 26; i <= totalFrames; i += chunkSize) {
         if (isCancelled) break;
@@ -65,7 +65,7 @@ export const GlobalCinematicCanvas: React.FC<GlobalCinematicCanvasProps> = ({ sc
     };
   }, []);
 
-  // Render current frame driven by full document scrollProgress
+  // Render frame driven by total page scroll position
   const renderFrame = useCallback(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -147,8 +147,6 @@ export const GlobalCinematicCanvas: React.FC<GlobalCinematicCanvasProps> = ({ sc
         className="w-full h-full block object-cover"
         style={{ touchAction: 'none' }}
       />
-      {/* Global Atmospheric Overlay for Readability (z-1 layer, non-blocking gradient) */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/15 to-black/50 pointer-events-none" />
     </div>
   );
 };

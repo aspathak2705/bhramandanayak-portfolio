@@ -41,9 +41,9 @@ const ELEMENTS = [
 
 export const Panchamahabhuta: React.FC = () => {
   return (
-    <section id="elements" className="relative bg-charcoal-900/60 py-28 px-6 md:px-12 border-b border-gold-500/10">
+    <section id="elements" className="relative py-28 px-6 md:px-12 border-b border-gold-500/10 z-10 bg-transparent">
       <div className="max-w-6xl mx-auto">
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-16 p-8 border border-gold-500/30 gold-border-glow bg-transparent">
           <div className="flex items-center justify-center space-x-3 text-gold-400 font-mono text-xs tracking-ultra uppercase mb-4">
             <span className="w-8 h-[1px] bg-gold-400/50" />
             <span>ELEMENTAL EQUILIBRIUM</span>
@@ -52,7 +52,7 @@ export const Panchamahabhuta: React.FC = () => {
           <h2 className="font-serif text-3xl md:text-5xl text-ivory-100 font-light mb-4">
             Panchamahabhuta
           </h2>
-          <p className="text-ivory-300/80 text-base font-sans font-light">
+          <p className="text-ivory-200 text-base font-sans font-light">
             The five fundamental cosmic building blocks that form the fabric of living architecture.
           </p>
         </div>
@@ -63,24 +63,24 @@ export const Panchamahabhuta: React.FC = () => {
             return (
               <div
                 key={el.title}
-                className="p-6 bg-charcoal-950 border border-gold-500/10 hover:border-gold-500/40 transition-all group flex flex-col justify-between gold-border-glow"
+                className="p-6 border border-gold-500/30 hover:border-gold-400 transition-all group flex flex-col justify-between gold-border-glow bg-transparent"
               >
                 <div>
-                  <div className="w-12 h-12 rounded-full border border-gold-400/30 flex items-center justify-center mb-6 bg-charcoal-900 group-hover:scale-110 transition-transform">
+                  <div className="w-12 h-12 rounded-full border border-gold-400/30 flex items-center justify-center mb-6 bg-transparent group-hover:scale-110 transition-transform">
                     <IconComponent className="w-5 h-5 text-gold-400" />
                   </div>
-                  <span className="text-[10px] font-mono text-gold-400/80 uppercase tracking-widest block mb-1">
+                  <span className="text-[10px] font-mono text-gold-400 font-bold uppercase tracking-widest block mb-1">
                     {el.zone}
                   </span>
                   <h3 className="font-serif text-xl text-ivory-100 font-semibold mb-1">
                     {el.title}
                   </h3>
-                  <p className="text-xs text-gold-300 font-medium mb-4">{el.name}</p>
-                  <p className="text-xs text-ivory-300/70 font-sans leading-relaxed">
+                  <p className="text-xs text-gold-400 font-medium mb-4">{el.name}</p>
+                  <p className="text-xs text-ivory-300 font-sans leading-relaxed">
                     {el.desc}
                   </p>
                 </div>
-                <div className="mt-6 pt-4 border-t border-gold-500/10 text-[10px] font-mono text-ivory-400/50">
+                <div className="mt-6 pt-4 border-t border-gold-500/10 text-[10px] font-mono text-ivory-400">
                   0{i + 1} / 05
                 </div>
               </div>
