@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Navbar } from './components/Navbar';
-import { CinematicHero } from './components/hero/CinematicHero';
+import { GlobalCinematicCanvas } from './components/hero/GlobalCinematicCanvas';
+import { HeroChapter } from './components/hero/HeroChapter';
 import { IntroSection } from './components/sections/IntroSection';
 import { AboutSection } from './components/sections/AboutSection';
 import { VastuMandala } from './components/sections/VastuMandala';
@@ -17,6 +18,23 @@ import { ContactSection } from './components/sections/ContactSection';
 import { Footer } from './components/Footer';
 
 export function App() {
+  const [scrollProgress, setScrollProgress] = useState(0);
+
+  // Global window scroll progress listener (0.0 at top of document to 1.0 at absolute bottom)
+  useEffect(() => {
+    const handleScroll = () => {
+      const totalScrollable = document.documentElement.scrollHeight - window.innerHeight;
+      if (totalScrollable > 0) {
+        const progress = Math.min(1, Math.max(0, window.scrollY / totalScrollable));
+        setScrollProgress(progress);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   const scrollToContact = () => {
     const el = document.getElementById('contact');
     if (el) {
@@ -25,50 +43,55 @@ export function App() {
   };
 
   return (
-    <div className="min-h-screen bg-charcoal-950 text-ivory-100 selection:bg-gold-500/30 selection:text-gold-300">
+    <div className="relative min-h-screen bg-charcoal-950 text-ivory-100 selection:bg-gold-500/30 selection:text-gold-300">
+      {/* 01 — Fixed Global Cinematic Canvas (Scrubs 240 WebP frames across 100% page scroll) */}
+      <GlobalCinematicCanvas scrollProgress={scrollProgress} />
+
+      {/* 02 — Fixed Navigation Bar */}
       <Navbar onBookClick={scrollToContact} />
 
-      <main>
-        {/* 01 — Cinematic Hero (Scroll-driven HTML Canvas Frame Sequence) */}
-        <CinematicHero />
+      {/* 03 — Translucent Storytelling Page Overlay */}
+      <main className="relative z-10">
+        {/* Chapter 01: Hero Entry */}
+        <HeroChapter onBookClick={scrollToContact} />
 
-        {/* 02 — Philosophy Introduction */}
+        {/* Chapter 02: Philosophy Introduction */}
         <IntroSection />
 
-        {/* 03 — About the Vastu Vidyar */}
+        {/* Chapter 03: About Vastu Visarad */}
         <AboutSection />
 
-        {/* 04 & 05 — Vastu Philosophy & Vastu Purusha Mandala */}
+        {/* Chapter 04 & 05: Vastu Purusha Mandala */}
         <VastuMandala />
 
-        {/* 06 — Panchamahabhuta */}
+        {/* Chapter 06: Panchamahabhuta */}
         <Panchamahabhuta />
 
-        {/* 07 — Navagraha */}
+        {/* Chapter 07: Navagraha */}
         <NavagrahaSection />
 
-        {/* 08 — Services */}
+        {/* Chapter 08: Services */}
         <ServicesSection />
 
-        {/* 09 — Consultation Process */}
+        {/* Chapter 09: Consultation Process */}
         <ConsultationProcess />
 
-        {/* Secondary Cinematic Sections: Cosmos -> Vastu -> Architecture -> Human Life */}
+        {/* Secondary Story Transitions */}
         <SecondaryCinematicSections />
 
-        {/* 10 — Projects / Case Studies */}
+        {/* Chapter 10: Case Studies */}
         <ProjectsSection />
 
-        {/* 11 — Insights */}
+        {/* Chapter 11: Insights */}
         <InsightsSection />
 
-        {/* 13 — FAQ */}
+        {/* Chapter 12: FAQ */}
         <FAQSection />
 
-        {/* 14 — Consultation CTA */}
+        {/* Chapter 13: Consultation CTA */}
         <ConsultationCTA onBookClick={scrollToContact} />
 
-        {/* 15 — Contact */}
+        {/* Chapter 14: Contact */}
         <ContactSection />
       </main>
 

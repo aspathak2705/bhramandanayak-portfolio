@@ -54,9 +54,9 @@ const SERVICES = [
 
 export const ServicesSection: React.FC = () => {
   return (
-    <section id="services" className="relative bg-charcoal-900/40 py-28 px-6 md:px-12 border-b border-gold-500/10">
+    <section id="services" className="relative py-28 px-6 md:px-12 border-b border-gold-500/10 z-10 bg-transparent">
       <div className="max-w-6xl mx-auto">
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-16 bg-black/40 backdrop-blur-md p-8 border border-gold-500/20 gold-border-glow">
           <div className="flex items-center justify-center space-x-3 text-gold-400 font-mono text-xs tracking-ultra uppercase mb-4">
             <span className="w-8 h-[1px] bg-gold-400/50" />
             <span>CONSULTANCY OFFERINGS</span>
@@ -76,11 +76,11 @@ export const ServicesSection: React.FC = () => {
             return (
               <div
                 key={s.title}
-                className="p-8 bg-charcoal-950 border border-gold-500/10 hover:border-gold-500/30 transition-all gold-border-glow flex flex-col justify-between"
+                className="p-8 bg-black/40 backdrop-blur-md border border-gold-500/20 hover:border-gold-500/40 transition-all gold-border-glow flex flex-col justify-between"
               >
                 <div>
                   <div className="flex items-center space-x-4 mb-6">
-                    <div className="w-12 h-12 rounded-full border border-gold-400/30 flex items-center justify-center bg-charcoal-900">
+                    <div className="w-12 h-12 rounded-full border border-gold-400/30 flex items-center justify-center bg-black/60">
                       <IconComp className="w-5 h-5 text-gold-400" />
                     </div>
                     <div>

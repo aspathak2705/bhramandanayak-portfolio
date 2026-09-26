@@ -4,8 +4,24 @@
 
 @layer base {
   body {
-    background-color: #060709;
-    color: #FAF8F5;
+    background-color: #050505;
+    color: #F5F1E8;
+    overflow-x: hidden;
+  }
+
+  /* MANDATORY BUTTON TEXT COLOR OVERRIDE: ALWAYS GOLD #D4AF37 */
+  button,
+  button *,
+  a.button-gold,
+  a.button-gold * {
+    color: #D4AF37 !important;
+  }
+
+  button svg,
+  button svg path,
+  a.button-gold svg,
+  a.button-gold svg path {
+    stroke: #D4AF37 !important;
   }
 }
 
@@ -14,19 +30,19 @@
   width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #060709;
+  background: #050505;
 }
 ::-webkit-scrollbar-thumb {
-  background: #2E3244;
+  background: rgba(212, 175, 55, 0.3);
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #C5A047;
+  background: #D4AF37;
 }
 
 /* Ambient glow utility */
 .gold-glow {
-  box-shadow: 0 0 40px -10px rgba(197, 160, 71, 0.15);
+  box-shadow: 0 0 40px -10px rgba(212, 175, 55, 0.2);
 }
 
 .gold-gradient-text {
@@ -36,10 +52,10 @@
 }
 
 .gold-border-glow {
-  border: 1px solid rgba(197, 160, 71, 0.2);
+  border: 1px solid rgba(212, 175, 55, 0.28);
   transition: all 0.3s ease;
 }
 .gold-border-glow:hover {
-  border-color: rgba(197, 160, 71, 0.5);
-  box-shadow: 0 0 25px rgba(197, 160, 71, 0.15);
+  border-color: rgba(212, 175, 55, 0.6);
+  box-shadow: 0 0 25px rgba(212, 175, 55, 0.2);
 }
