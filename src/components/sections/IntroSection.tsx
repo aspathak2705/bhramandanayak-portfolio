@@ -3,7 +3,7 @@ import { Compass, Scale } from 'lucide-react';
 
 export const IntroSection: React.FC = () => {
   return (
-    <section className="relative py-28 px-6 md:px-12 border-b border-gold-500/10 z-10 bg-transparent">
+    <section id="philosophy" className="relative py-28 px-6 md:px-12 border-b border-gold-500/10 z-10 bg-transparent">
       <div className="max-w-6xl mx-auto">
         <div className="flex items-center space-x-3 text-gold-400 font-mono text-xs tracking-ultra uppercase mb-6">
           <span className="w-8 h-[1px] bg-gold-400/50" />

@@ -33,20 +33,20 @@ export const NavagrahaSection: React.FC = () => {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-          {/* Planet Selection Grid (Responsive 2 cols on mobile, 3 cols on sm+) */}
+          {/* Planet Selection Grid (Subtle dark background rgba(6,7,9,0.85) to make 9 boxes clearly visible over bright video frames) */}
           <div className="lg:col-span-7 grid grid-cols-2 sm:grid-cols-3 gap-3">
             {PLANETS.map((p) => (
               <button
                 key={p.name}
                 onClick={() => setActivePlanet(p)}
-                className={`p-3 sm:p-4 text-left border transition-all cursor-pointer bg-transparent ${
+                className={`p-3.5 sm:p-4 text-left border backdrop-blur-md transition-all cursor-pointer ${
                   activePlanet.name === p.name
-                    ? 'border-gold-400 scale-[1.02] shadow-lg'
-                    : 'border-gold-500/20 text-ivory-200 hover:border-gold-400/50'
+                    ? 'border-gold-400 bg-black/85 text-gold-300 scale-[1.03] shadow-xl shadow-gold-500/20'
+                    : 'border-gold-500/30 bg-black/75 text-ivory-100 hover:border-gold-400/70 hover:bg-black/85'
                 }`}
               >
-                <div className="text-[10px] font-mono !text-gold-400 font-bold mb-1">{p.symbol}</div>
-                <div className="font-serif text-sm sm:text-base font-medium truncate">{p.name}</div>
+                <div className="text-[10px] font-mono !text-gold-400 font-bold mb-1 tracking-wider uppercase">{p.symbol}</div>
+                <div className="font-serif text-sm sm:text-base font-semibold truncate text-ivory-100">{p.name}</div>
                 <div className="text-[10px] text-ivory-300 font-mono truncate">{p.direction}</div>
               </button>
             ))}
