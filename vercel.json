@@ -1,4 +1,3 @@
-# Vercel Configuration
 {
   "framework": "vite",
   "buildCommand": "npm run build",
